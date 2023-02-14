@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  app:
+    image: ruby:3.0.0-alpine
+    user: root
+    volumes:
+      - .:/app
+      - bundle_path:/app/vendor/bundle
+    env_file: .env
+    working_dir: /app
+    command: bundle exec rspec spec/
+    tty: true
+    stdin_open: true
+
+volumes:
+  bundle_path:
